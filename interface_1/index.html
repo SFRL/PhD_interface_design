@@ -1,0 +1,1099 @@
+<html>
+
+<head>
+
+  <title>Sketching Sounds - Interface Evaluation</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/mobile-detect.js/0.4.1/mobile-detect.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script language="javascript" type="text/javascript" src="lib/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="lib/p5.dom.min.js"></script>
+  <script language="javascript" type="text/javascript" src="lib/RDP.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+
+</head>
+
+<body onresize="displayWindowSize()">
+
+  <header id="navi">
+    <img src="img/logo.gif" id="MATLogo" alt="media and arts technology logo">
+    <h1>Sketching Sounds</h1>
+    <button id="clear" onclick="resetTask()"><span class="material-icons medium">restart_alt</span>Restart</button>
+    <button id="undo"><span class="material-icons medium">undo</span>Undo</button>
+    <audio controls src='audio/sound1.mp3' id='soundplayer'>Your browser does not support the audio element</audio>
+    <button id="next" onclick="nextTask()"><span class="material-icons medium">arrow_forward</span>Next</button>
+    <div id="QMLogo"></div>
+
+
+  </header>
+
+  <!-- Welcome page -->
+  <main id="welcome">
+    <section class="large">
+      <h1>Welcome to the Sketching Sounds study</h1>
+      <p> Thank you for showing interest in this study! </p>
+      <p>
+        Please be aware that you should complete this study
+        on a laptop or desktop computer and not on a mobile device like a tablet or phone.
+      </p>
+      <p>
+        <span class="material-icons large">laptop</span>
+        <span class="material-icons" style="color: green">check_circle_outline</span>
+        <span class="material-icons large">monitor</span>
+        <span class="material-icons" style="color: green">check_circle_outline</span>
+        <span class="material-icons large">smartphone</span>
+        <span class="material-icons" style="color: red">block</span>
+        <span class="material-icons large">tablet</span>
+        <span class="material-icons" style="color: red">block</span>
+      </p>
+      <p>
+        If possible, use the integrated trackpad of your laptop or a computer mouse rather than a touchscreen or other
+        specialised control devices.
+      </p>
+      <p>
+        <span class="material-icons large">call_to_action</span>
+        <span class="material-icons" style="color: green">check_circle_outline</span>
+        <span class="material-icons large">mouse</span>
+        <span class="material-icons" style="color: green">check_circle_outline</span>
+        <span class="material-icons large">touch_app</span>
+        <span class="material-icons" style="color: red">block</span>
+      </p>
+      <p> This study involves sound. Please make sure that you are able to listen to audio either through headphones or
+        speakers.
+        Also, for your own safety, start with a low volume level.
+      </p>
+      <p>
+        <span class="material-icons large">headphones</span>
+        <span class="material-icons" style="color: green">check_circle_outline</span>
+        <span class="material-icons large">speaker</span>
+        <span class="material-icons" style="color: green">check_circle_outline</span>
+      </p>
+    </section>
+    <button onclick="displayPage('participant_information',this)">Next</button>
+  </main>
+
+  <!-- Participant information sheet -->
+  <main id="participant_information">
+    <section class="instructions">
+      <h1>Participant Information Sheet</h1>
+      <p> Please read the following information carefully before proceeding to
+        the study.</p>
+      <h3>Study title</h3>
+      Sketching Sounds: User evaluation of drawing interfaces
+
+      <h3>Researcher’s name</h3>
+      Sebastian L&ouml;bbers supervised by Dr. George Fazekas
+
+      <h3>Queen Mary Ethics of Research Committee reference number: </h3>
+      QMERC20.009
+
+      <h3>Invitation paragraph</h3>
+      <p>You are being invited to participate in a research study. Before you decide whether or not you wish to
+        participate in this study,
+        it is important for you to understand why the research is being done and what it will involve.
+        Please take time to read the following information carefully and discuss it with others if you wish.
+        Ask us questions if there is anything that is not clear or if you would like more information.</p>
+
+      <h3>What is the purpose of the study and what would taking part involve?</h3>
+      <p>The purpose of this study is to evaluate two different digital drawing interfaces.
+        The results will be helpful for the development of a sketch-based sound synthesiser.
+        You can find out more about this PhD research <a
+          href="https://sfrl.github.io/PhD_Research_Sketching_Sounds/Webpage/" target="_blank">here</a>.</p>
+      <p>In this study, you will sequentially be presented with two
+        different digital drawing interfaces. For each interface, you will follow four different tasks of which two
+        include sound that will instruct
+        you to create sketches with the drawing interface.
+        After finishing the task with one interface, you will be asked to fill in a short questionnaire about your
+        experience before
+        proceeding to the next interface.
+        In the end, you will be asked to disclose very general personal data about your age, gender, occupation,
+        the device that you are using and your experience with music, art and design.
+        It will take approximately 15 minutes to complete this study.
+        The study will be conducted entirely online and you will only have to participate once.
+        Your replies to the survey questions and your interaction with the interfaces will be recorded for analysis.
+        All data will be submitted at the end of the study. </p>
+
+
+      <h3>Why am I being invited?</h3>
+
+      <p>You are being invited to participate in this research study because you are over the age of 16 and
+        have normal or corrected vision and hearing. You should not take part in this study if you are under the age of
+        16 and
+        if you are not able to perceive objects on a computer screen, listen to sound with headphones or through
+        loudspeakers
+        or if you can only access the study through a phone or tablet. </p>
+
+
+      <h3>Do I have to take part? </h3>
+      <p> This participant information sheet has been written to help you decide if you would like to take part.
+        It is up to you whether you wish to take part. If you do decide to take part you will be free to withdraw at any
+        time without needing to provide a reason, and with no penalties or detrimental effects. </p>
+
+
+      <h3>What are the possible benefits of taking part?</h3>
+      <p>Taking part in the study will support this PhD research that aims to further our understanding of human
+        associations
+        between sound and visual shapes and how these finding can be used in practical sound applications.
+        The proposed outcome of a sketch-based sound synthesiser will make it easier for anyone to create a sound in a
+        straightforward way.</p>
+
+
+      <h3>What are the possible disadvantages and risks of taking part?</h3>
+      <p> Keep in mind that this study involves sound. Sounds might be louder than expected and could potentially
+        startle you or
+        in a very unlikely scenario cause harm to your hearing. Please make sure that the volume of your headphones or
+        speakers is on a
+        low level before starting this study. </p>
+
+
+      <h3>Expenses and payments</h3>
+      <p>This study is unpaid.</p>
+
+      <h3>What information about me will you be collecting?</h3>
+      <p> Data about your age, gender and occupation, your experience with music, art and design and your experience
+        with the interfaces will be collected through surveys and very general information about your browser and device
+        will be
+        extracted automatically. In addition, the position of your mouse and mouse events (click and release) and
+        the width and height of your browser window during the interaction with the interfaces will be recorded.
+        None of the collected data will enable the researchers to identfy you.</p>
+
+
+
+      <h3>How will my data be stored and who will have access to it? </h3>
+      <p> Your data will be stored in fully anonymised format in London, UK, and only the PhD researcher Sebastian
+        L&ouml;bbers and the principal
+        investigator Dr. George Fazekas will be able to access it. Your data information will be treated as strictly
+        confidential and
+        handled in accordance with the provisions of the Data Protection Act 2018 and comply with the data processing
+        and storage policies of
+        Queen Mary University of London. <br>
+        <a href="http://www.arcs.qmul.ac.uk/media/arcs/policyzone/Data-Protection-Policy-v03.0.pdf" target="_blank">Data
+          Protection Policy</a><br>
+        <a href="https://www.its.qmul.ac.uk/media/its/documents/governance/sops/SOP-DG14-Storage-of-Information-Policy---V2.0.pdf"
+          target="_blank">Information/Data Governance Policy – DG14 – Storage of information</a></p>
+
+
+
+      <h3>When and how will my data be destroyed?</h3>
+      <p>Your data will be saved electronically for five years after collection and erased through hard drive
+        formatting.</p>
+
+
+      <h3>How will my data be used and shared? </h3>
+      <p> The results of this study will be part of the PhD thesis that is connected to this research project.
+        Results will be mentioned in a future conference or journal paper publication.
+        All data is stored locally in an anonymised form and will not be accessible for or
+        shared with anyone else than the involved researchers.</p>
+
+
+      <h3>Under what legal basis are you collecting this information?</h3>
+      <p>Queen Mary University of London processes personal data for research purposes in accordance with the lawful
+        basis of ‘public task’.
+        Please read Queen Mary’s privacy notice for research participants containing important information about your
+        personal data and
+        your rights in this respect. If you have any questions relating to data protection, please contact
+        Queen Mary’s Data Protection Officer, Queens’ Building, Mile End Road, London, E1 4NS or <a
+          href="mailto:data-protection@qmul.ac.uk">data-protection@qmul.ac.uk</a> or 020 7882 7596.
+      </p>
+
+      <h3>What will happen if I want to withdraw from this study?</h3>
+      <p>You can withdraw from this study at any time without providing a reason.
+        Withdrawing will have no disadvantage for you, and you will hear no more about this study.
+        Your data will only be submitted if you complete the study. Your data will be saved entirely anonymised and is
+        not possible to
+        link the data to a particular person. For this reason, it is however not possible to delete the data entry of a
+        specific person.</p>
+
+
+
+      <h3>What should I do if I have any concerns about this study? </h3>
+      <p>If you have any concerns about the manner in which the study was conducted, in the first instance, please
+        contact the researcher(s)
+        responsible for the study Sebastian L&ouml;bbers - <a
+          href="mailto:s.lobbers@qmul.ac.uk">s.lobbers@qmul.ac.uk</a>.
+        If you have a complaint which you feel you cannot discuss with the researchers then you should contact the
+        Research Ethics Facilitators by e-mail: <a
+          href="mailto:research-ethics@qmul.ac.uk">research-ethics@qmul.ac.uk</a>.
+        When contacting the Research Ethics Facilitators, please provide details of the study title, description of the
+        study and
+        QMERC reference number (where possible), the researcher(s) involved, and details of the complaint you wish to
+        make. </p>
+
+
+
+      <h3>Who can I contact if I have any questions about this study?</h3>
+      <p> Sebastian L&ouml;bbers <br>
+        <a href="mailto:s.lobbers@qmul.ac.uk">s.lobbers@qmul.ac.uk</a></p>
+
+    </section>
+    <button onclick="displayPage('consent',this)">Next</button>
+  </main>
+
+  <!-- Consent -->
+  <main id="consent">
+    <section class='instructions'>
+      <h1>Consent</h1>
+      <p>
+        Please give your consent below after you have read the Participant Information about the research on the
+        previous page. <br><br>
+        Title of Study: Sketching Sounds: User evaluation of drawing interfaces<br>
+        Queen Mary Ethics of Research Committee Ref.: QMERC20.00<br><br>
+
+        Thank you for considering taking part in this research. The people organising the research must explain the
+        project to you before you agree to take part.
+        If you have any questions arising from the Participant Information or other explanation already given to you,
+        please ask the researchers before you decide whether to join in.<br>
+        <ul>
+          <li>I confirm that I have read the Participant Information Sheet for the above study;
+            or it has been read to me.
+            I have had the opportunity to consider the information, ask questions and have had these answered
+            satisfactorily. </li>
+          <li>I understand that my participation is voluntary and that I am free to stop taking part in the study at any
+            time without giving any reason and without my rights being affected. </li>
+          <li>I understand that my data will be accessed by the PhD researcher, Sebastian L&ouml;bbers, and the
+            principal investigator, Dr. George Fazekas</li>
+          <li>I understand that my data will be securely stored in London, UK and in accordance with the data protection
+            guidelines of the Queen Mary University of London five years in fully anonymised form.</li>
+          <li>I understand that collected data is completely anonymized and information that I have provided can
+            therefore not be withdrawn after submission.</li>
+          <li>I understand that the information collected about me will be used to support other research in the future,
+            and it may be shared in anonymised form with other researchers.</li>
+        </ul>
+        By clicking "Next" I confirm that I understand the points mentioned above and that I agree with them
+      </p>
+    </section>
+    <button onclick="displayPage('study_brief',this);displayWindowSize()">Next</button>
+  </main>
+
+  <!-- Instructions and audio test before starting the study -->
+  <main id="study_brief">
+    <section class="instructions">
+      <h1>How does the study work?</h1>
+      <p>Please read the following infromation carefully before starting the study</p>
+      <h3>1. Procedure</h3>
+      <p>You will be presented with <strong>two digital drawing interfaces</strong> and a series of <strong>four
+          tasks</strong> that tell you what to draw. Two tasks will include <strong>audio</strong>.
+        After completing all four tasks for one interface, you will be asked to fill in a short questionaire before
+        proceeding to the next interface.
+        The study conlcudes with a short questionnaire about your overall experience and a few questions about your
+        person and your hardware setup.</p>
+      <h3>2. Drawing interface</h3>
+      <p>Below you see a labelled image of the drawing interface that works as follows:
+        <ol>
+          <li>If you are unhappy with your sketch and/or want to see the task description again,
+            you can <strong>Reset</strong> the current task with a blank canvas.</li>
+          <li>You can erase the most recent stroke of your sketch with the <strong>Undo</strong> function.</li>
+          <li>If the task involves sound, this <strong>Audio Player </strong> will be displayed. Playback is looped and
+            will start automatically, but you
+            can pause/resume at any point.
+          </li>
+          <li>Once you are done sketching, click <strong>Next</strong> to go to the next task</li>
+          <li>This is your sketch canvas. You can click anywhere on it to start drawing.
+            The task description will disappear automatially once you start.</li>
+          <li>This is the description of the task. Please read it carefully before starting.</li>
+        </ol>
+      </p>
+      <figure class="surveyElement">
+        <img src="img/interface_labelled.png" alt="labelled image of drawing interface">
+        <figcaption>Drawing interface</figcaption>
+      </figure>
+
+      <h3>3. Audio Playback</h3>
+      <p> For each interface, the last two tasks involve audio. Please listen to the audio file below and adjust your
+        volume to a comfortable level.
+        Make sure to start with a very low level and, if possible, keep the same volume throughout the study.
+
+        <figure class="surveyElement">
+          <audio src="audio/whitenoise.mp3" controls></audio>
+          <figcaption>White noise test audio</figcaption>
+        </figure>
+      </p>
+
+      <h3>4. Browser window size</h3>
+      <p>Please ensure that your browser window size is at least <span id="min_browser_size"></span> pixels. If
+        possible, keep the same window size throughout the study.
+        Be aware that if you adjust the window size during a task, your sketch will be erased.
+      </p>
+      <div id="window_size_check" class="surveyElement">
+        <p id="window_width">Your window width is: <span></span><span class="material-icons"></span></p>
+        <p id="window_height">Your window height is: <span></span><span class="material-icons"></span></p>
+      </div>
+    </section>
+    <button onclick="if(checkWindowSize()) {displayPage('sketch',this);startStudy();}">Start</button>
+  </main>
+
+  <!-- The drawing interface -->
+  <main id="sketch">
+    <div id="task_description_wrapper">
+      <p id="task_description"></p>
+    </div>
+  </main>
+
+  <!-- Usability survey -->
+  <main id="usability_survey">
+    <form id="usability_survey_form" name="SUS">
+      <section>
+        <h1>Usability questionaire</h1>
+        <p>Please answer all of the following questions about your experience with the interface.
+          For context, this interface will be part of a novel sound synthesiser that creates a sound based on your
+          drawings.
+          Assume the role of potential user who is testing an early prototype.
+        </p>
+
+        <label for="q1">1. I think that I would like to use this system frequently.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q1" value="1" required /></li>
+          <li><input type="radio" name="q1" value="2" /></li>
+          <li><input type="radio" name="q1" value="3" /></li>
+          <li><input type="radio" name="q1" value="4" /></li>
+          <li><input type="radio" name="q1" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q2">2. I found the system unnecessarily complex.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q2" value="1" required /></li>
+          <li><input type="radio" name="q2" value="2" /></li>
+          <li><input type="radio" name="q2" value="3" /></li>
+          <li><input type="radio" name="q2" value="4" /></li>
+          <li><input type="radio" name="q2" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q3">3. I thought the system was easy to use.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q3" value="1" required /></li>
+          <li><input type="radio" name="q3" value="2" /></li>
+          <li><input type="radio" name="q3" value="3" /></li>
+          <li><input type="radio" name="q3" value="4" /></li>
+          <li><input type="radio" name="q3" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q4">4. I think that I would need the support of a technical person to be able to use this
+          system.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q4" value="1" required /></li>
+          <li><input type="radio" name="q4" value="2" /></li>
+          <li><input type="radio" name="q4" value="3" /></li>
+          <li><input type="radio" name="q4" value="4" /></li>
+          <li><input type="radio" name="q4" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q5">5. I found the various functions in this system were well integrated.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q5" value="1" required /></li>
+          <li><input type="radio" name="q5" value="2" /></li>
+          <li><input type="radio" name="q5" value="3" /></li>
+          <li><input type="radio" name="q5" value="4" /></li>
+          <li><input type="radio" name="q5" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q6">6. I thought there was too much inconsistency in this system.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q6" value="1" required /></li>
+          <li><input type="radio" name="q6" value="2" /></li>
+          <li><input type="radio" name="q6" value="3" /></li>
+          <li><input type="radio" name="q6" value="4" /></li>
+          <li><input type="radio" name="q6" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q7">7. I would imagine that most people would learn to use this system very
+          quickly.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q7" value="1" required /></li>
+          <li><input type="radio" name="q7" value="2" /></li>
+          <li><input type="radio" name="q7" value="3" /></li>
+          <li><input type="radio" name="q7" value="4" /></li>
+          <li><input type="radio" name="q7" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q8">8. I found the system very cumbersome to use.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q8" value="1" required /></li>
+          <li><input type="radio" name="q8" value="2" /></li>
+          <li><input type="radio" name="q8" value="3" /></li>
+          <li><input type="radio" name="q8" value="4" /></li>
+          <li><input type="radio" name="q8" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q9">9. I felt very confident using the system.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q9" value="1" required /></li>
+          <li><input type="radio" name="q9" value="2" /></li>
+          <li><input type="radio" name="q9" value="3" /></li>
+          <li><input type="radio" name="q9" value="4" /></li>
+          <li><input type="radio" name="q9" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q10">10. I needed to learn a lot of things before I could get going with this
+          system.<sup>*</sup></label>
+        <ul class="horizontal surveyElement">
+          <li> Strongly Disagree </li>
+          <li><input type="radio" name="q10" value="1" required /></li>
+          <li><input type="radio" name="q10" value="2" /></li>
+          <li><input type="radio" name="q10" value="3" /></li>
+          <li><input type="radio" name="q10" value="4" /></li>
+          <li><input type="radio" name="q10" value="5" /></li>
+          <li> Strongly Agree </li>
+        </ul>
+        <label for="q11">11. General Feedback<sup>*</sup></label>
+        <textarea required class="surveyElement" name="q11" rows="7" cols="33"
+          placeholder="Briefly describe your overall experience with the interface and highlight positive and negative aspects of the interaction"></textarea>
+      </section>
+      <button type="submit" value="Submit">Next</button>
+    </form>
+  </main>
+
+  <!-- Final questions about the interface interaction -->
+  <main id='final_survey'>
+    <form id="final_survey_form" name="overall_feedback">
+      <section class='instructions'>
+        <h1>Overall experience</h1>
+        <p>Thank you for completing all tasks successfully. Please answer the following two questions about your overall
+          experience.</p>
+
+        <label for='best_interface'>Which interface did you prefer?<sup>*</sup></label>
+        <ul class="vertical surveyElement" id="best_interface_selection">
+          <li><input type='radio' name='best_interface' value="1" required /> Interface 1</li>
+          <li><input type='radio' name='best_interface' value="2" /> Interface 2</li>
+        </ul>
+        <label for="feedback">Please add any additional feedback that you might have</label>
+        <textarea name="feedback" rows="7" cols="33" placeholder="Type here..." class="surveyElement"></textarea>
+      </section>
+      <button type="submit" value="Submit">Next</button>
+    </form>
+  </main>
+
+  <!-- Personal questions -->
+  <main id="personal_survey">
+    <form id="personal_survey_form" name="personal_info">
+      <section class="instructions">
+        <h1>Personal information</h1>
+        <p>Almost done! Please fill in the following survey and submit your data.</p>
+
+        <h3>1. Personal Information</h3>
+        <label for="age">1.1 Age in years<sup>*</sup></label>
+        <input type="text" name="age" class="surveyElement" required />
+
+        <label for="gender">1.2 Gender<sup>*</sup></label>
+        <select name="gender" class="surveyElement" required>
+          <option value="">Please select</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="other">Other/Non-binary</option>
+          <option value="prefernottosay">Prefer not to say</option>
+        </select>
+
+        <label for="occupation">1.3 Occupation (if student please specify field of study)<sup>*</sup></label>
+        <input type="text" name="occupation" class="surveyElement" required>
+
+
+        <label for="visual_impairement">1.4 Do you have a visual impairment?<sup>*</sup></label>
+        <ul class="vertical surveyElement">
+          <li><input type="radio" name="visual_impairement" value="0" required>No</li>
+          <li><input type="radio" name="visual_impairement" value="1">Yes
+            - please specify <input type="text" name="visual_impairement_specify" /></li>
+        </ul>
+
+        <label for="auditory_impairement">1.5 Do you have a auditory impairment?<sup>*</sup></label>
+        <ul class="vertical surveyElement">
+          <li><input type="radio" name="auditory_impairement" value="0" required>No</li>
+          <li><input type="radio" name="auditory_impairement" value="1">Yes
+            - please specify <input type="text" name="auditory_impairement_specify" /></li>
+        </ul>
+
+        <h3>2. Musical experience</h3>
+        <label for="music_making">2.1 How often are you actively engaged in musical activity (e.g. playing ad
+          instrument, DJing or producing music in a DAW)<sup>*</sup></label>
+        <select name="music_making" class="surveyElement" required>
+          <option value="">Please select</option>
+          <option value="1">Never</option>
+          <option value="2">Once a year or less</option>
+          <option value="3">Multiple times a year</option>
+          <option value="4">Once a month</option>
+          <option value="5">Multiple times per month</option>
+          <option value="6">Once a week</option>
+          <option value="7">Multiple times per week</option>
+          <option value="8">Every Day</option>
+        </select>
+
+        <label for="music_consuming">2.2 How long do you actively listen to music every day?<sup>*</sup></label>
+        <select name="music_consuming" class="surveyElement" required>
+          <option value="">Please select</option>
+          <option value="0">0-15min</option>
+          <option value="1">15-30min</option>
+          <option value="2">30-60min</option>
+          <option value="3">60-90min</option>
+          <option value="4">2h</option>
+          <option value="5">2h-3h</option>
+          <option value="6">4h+</option>
+        </select>
+
+        <label for="music_education">2.3 How many years of formal training in a musical discipline (musical instrument
+          including voice or music theory including music informatics) did you have during your lifetime?<sup>*</sup>
+        </label>
+        <select name="music_education" class="surveyElement" required>
+          <option value="">Please select</option>
+          <option value="0">0 years</option>
+          <option value="1">0.5 years</option>
+          <option value="2">1 year</option>
+          <option value="3">2 years</option>
+          <option value="4">3-5 years</option>
+          <option value="5">6-9 years</option>
+          <option value="6">10+ years</option>
+        </select>
+
+
+        <h3>3. Visual art/design experience</h3>
+
+        <label for="art_making">3.1 In an average week how many hours do you spend creating visual art (this includes
+          anything from painting or illustrating to graphic design)<sup>*</sup></label>
+        <select name="art_making" class="surveyElement" required>
+          <option value="">Please select</option>
+          <option value="0">0 hours</option>
+          <option value="1">1 hour</option>
+          <option value="2">2 hours</option>
+          <option value="3">3 hours</option>
+          <option value="4">4 hours</option>
+          <option value="5">5 hours</option>
+          <option value="6">6+ hours</option>
+        </select>
+
+        <label for="art_consuming">3.2 On average how often do you engage with visual art or design either by visiting
+          exhibitions at museums/galleries or by reading publications specific to that field?<sup>*</sup> </label>
+        <select name="art_consuming" class="surveyElement" required>
+          <option value="">Please select</option>
+          <option value="0">Never</option>
+          <option value="1">Once a year or less</option>
+          <option value="2">Multiple times a year</option>
+          <option value="3">Once a month</option>
+          <option value="4">Multiple times per month</option>
+          <option value="5">Once a week</option>
+          <option value="6">Multiple times per week</option>
+          <option value="7">Every Day</option>
+        </select>
+
+        <label for="art_education">3.3 How many years of formal training in a visual art/design discipline (either
+          practical like studio art, illustration, graphic design or theoretical like art history, art theory) did you
+          have during your lifetime?<sup>*</sup> </label>
+        <select name="art_education" class="surveyElement" required>
+          <option value="">Please select</option>
+          <option value="0">0 years</option>
+          <option value="1">0.5 years</option>
+          <option value="2">1 year</option>
+          <option value="3">2 years</option>
+          <option value="4">3-5 years</option>
+          <option value="5">6-9 years</option>
+          <option value="6">10+ years</option>
+        </select>
+
+        <h3>4. Hardware</h3>
+        <label for="device">4.1 What type of device are you using to participate in this study. Please remember that
+          mobile devices (phones, tablets, etc.) are not allowed for this study.<sup>*</sup></label>
+        <ul class="vertical surveyElement">
+          <li><input type="radio" name="device" value="1" required>Laptop / MacBook</li>
+          <li><input type="radio" name="device" value="2">Desktop Computer</li>
+          <li><input type="radio" name="device" value="3">Other
+            - please specify <input type="text" name="device_specify" /></li>
+        </ul>
+
+        <label for="input">4.2 What device do you use to control the mouse cursor?<sup>*</sup></label>
+        <ul class="vertical surveyElement">
+          <li><input type="radio" name="input" value="1" required>Trackpad integrated in laptop/MacBook</li>
+          <li><input type="radio" name="input" value="2">Computer mouse</li>
+          <li><input type="radio" name="input" value="3">Specialised input e.g. graphics tablet or touchscreen
+            - please specify <input type="text" name="input_specify" /></li>
+        </ul>
+
+        <label for="audio">4.3 How did you listen to audio for this study?<sup>*</sup></label>
+        <ul class="vertical surveyElement">
+          <li><input type="radio" name="audio" value="1" required>In-ear earphones (e.g. Apple iPods)</li>
+          <li><input type="radio" name="audio" value="2">Over-ear headphones (e.g. Beats)</li>
+          <li><input type="radio" name="audio" value="3">Integrated speakers (e.g. laptop speakers)</li>
+          <li><input type="radio" name="audio" value="4">External speakers (e.g. hi-fi sound system)</li>
+          <li><input type="radio" name="audio" value="5">Other
+            - please specify <input type="text" name="audio_specify" /></li>
+        </ul>
+      </section>
+      <button type="submit" value="Submit">Submit</button>
+    </form>
+  </main>
+
+  <!-- Waiting while submitting -->
+  <main id="submit">
+    <section class="large">
+      <p>Please wait. Your data is submitted...</p>
+    </section>
+  </main>
+
+  <!-- End screen -->
+  <main id="end">
+    <section class="large">
+      <h1>Thank you for taking part in the study!</h1>
+      <p>This research is supported by the <a href="http://www.mat.qmul.ac.uk/">EPSRC and AHRC Centre for Doctoral
+          Training in Media and Arts Technology.</a></p>
+      <p>You can close this window now.</p>
+    </section>
+  </main>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- CHANGE BACK BEFORE DEPLOYMENT -->
+  <script src="/__/firebase/8.2.7/firebase-app.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script> -->
+
+  <!-- Add realtime database -->
+  <!-- CHANGE BACK BEFORE DEPLOYMENT -->
+  <script src="/__/firebase/8.2.7/firebase-database.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script> -->
+
+  <!-- Initialize Firebase -->
+  <!-- CHANGE BACK BEFORE DEPLOYMENT -->
+  <script src="/__/firebase/init.js"></script>
+  <!-- <script src="firebase.js"></script> -->
+
+  <script>
+    //////////////////////////////////////////
+    // Display different pages and headers
+    ////////////////////////////////////////// 
+
+    //Display the different pages of the study 
+    function displayPage(id, currentPage) {
+      let page = document.getElementById(id);
+      // Go up in the DOM until main element is reached
+      while (currentPage.tagName != 'MAIN') {
+        currentPage = currentPage.parentNode;
+      }
+      //Hide current page
+      currentPage.style.display = 'none';
+      //Kill audio on current page
+      $(currentPage).find('audio').each(function () {
+        this.pause();
+        this.src = '';
+      });
+
+      //Display next page
+      page.style.display = 'block';
+    }
+
+    function swapHeader(section) {
+      let headerChildren = document.getElementById('navi').childNodes;
+      for (let i = 0; i < headerChildren.length; i++) {
+        if (headerChildren[i].tagName == 'H1') {
+          if (section == 'heading') {
+            headerChildren[i].style.display = 'block';
+          } else {
+            headerChildren[i].style.display = 'none';
+          }
+        } else if (headerChildren[i].tagName == 'BUTTON') {
+          if (section == 'buttons') {
+            headerChildren[i].style.display = 'flex';
+          } else {
+            headerChildren[i].style.display = 'none';
+          }
+        }
+      }
+    }
+
+    // Browser window check
+    let min_w = 800;
+    let min_h = 600;
+
+    // Add text to study brief
+    document.getElementById("min_browser_size").innerHTML = min_w + "x" + min_h;
+
+    // Get size of browser window
+    function getWindowSize() {
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+      return [w, h];
+    }
+
+    // Display browser window size in study brief
+    function displayWindowSize() {
+      let size = getWindowSize();
+      // Check width
+      let widthCheck = document.getElementById("window_width");
+      widthCheck.childNodes[1].innerHTML = size[0];
+      if (size[0] >= min_w) {
+        widthCheck.childNodes[2].innerHTML = 'check_circle_outline';
+        widthCheck.childNodes[2].style.color = 'green';
+      } else {
+        widthCheck.childNodes[2].innerHTML = 'block';
+        widthCheck.childNodes[2].style.color = 'red';
+      }
+      // Check Height
+      let heightCheck = document.getElementById("window_height");
+      heightCheck.childNodes[1].innerHTML = size[1];
+      if (size[1] >= min_h) {
+        heightCheck.childNodes[2].innerHTML = 'check_circle_outline';
+        heightCheck.childNodes[2].style.color = 'green';
+      } else {
+        heightCheck.childNodes[2].innerHTML = 'block';
+        heightCheck.childNodes[2].style.color = 'red';
+      }
+    }
+
+    // Check if window size is large enough
+    function checkWindowSize() {
+      let size = getWindowSize();
+      if (size[0] < min_w || size[1] < min_h) {
+        alert("Please adjust your window size to at least " + min_w + "x" + min_h + " pixels.")
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    //////////////////////////////////////////
+    // Extract information from a participant's browser
+    ////////////////////////////////////////// 
+
+
+    // Info about a participant's device
+    let participantDevice = new MobileDetect(window.navigator.userAgent);
+    // Detect mobile devices and raise alert
+    if (participantDevice.mobile()) {
+      alert(
+        "It appears that you are accessing this study through a mobile device. Please switch to a laptop or desktop computer."
+        );
+    }
+
+    //////////////////////////////////////////
+    // Handle drawing interface 
+    //////////////////////////////////////////  
+
+    //Function to shuffle an array 
+    function shuffleArray(array) {
+      //Randomise order of an array     
+      for (let currentIndex = array.length - 1; currentIndex > 0; currentIndex--) {
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        let tempValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = tempValue;
+      }
+      return array;
+    }
+
+    function shuffle2Elements(a, b) {
+      let threshold = Math.random();
+      if (threshold < 0.5) {
+        return [b, a];
+      } else {
+        return [a, b];
+      }
+    }
+
+    // Instance of drawing interface
+    let drawingInterface;
+
+    // Interface order
+    let interfaceIndex = 0;
+    let interfaceOrder = shuffle2Elements('real_time', 'stroke_end'); // Order in which interfaces are presented  
+    let numberOfInterfaces = interfaceOrder.length;
+
+    // Change values for best_interface question in final_survey to have interface names
+    $("#best_interface_selection").find("input").each(function (index) {
+      this.value = interfaceOrder[index];
+    });
+
+    // Index of current task with interface
+    let taskIndex = 0;
+    let numberOfTasks = 4; //The number of tasks for each interface
+
+    // Epsilon value of Ramer-Douglas-Peucker algorithm
+    let RDP_tolerance = 2;
+
+    const taskDescriptions = {
+      real_time_1: "Task 1:\nDraw a picture of a dog. Once you are done drawing, click 'Next'. Start drawing by clicking anywhere on the screen and moving the cursor. There is no time limit.",
+      real_time_2: "Task 2:\nNow, draw something that represents a noisy sound for you.",
+      real_time_3: "Task 3:\nListen to the sound and draw whatever you think represents it best. You can pause/resume audio in the header.",
+      real_time_4: "Task 4:\nListen to the sound and draw whatever you think represents it best. You can pause/resume audio in the header.",
+      stroke_end_1: "Task 1:\nDraw a picture of a cat. Once you are done drawing, click 'Next'. Start drawing by clicking anywhere on the screen and moving the cursor. There is no time limit.",
+      stroke_end_2: "Task 2:\nNow, draw something that represents a calm sound for you.",
+      stroke_end_3: "Task 3:\nListen to the sound and draw whatever you think represents it best. You can pause/resume audio in the header.",
+      stroke_end_4: "Task 4:\nListen to the sound and draw whatever you think represents it best. You can pause/resume audio in the header."
+    };
+
+    // Save interaction and sketch Data
+    let interactionData = {};
+    let sketchData = {};
+
+    // Create first p5 instance to start study 
+    function startStudy() {
+      let key = interfaceOrder[interfaceIndex] + '_' + String(taskIndex + 1);
+      newP5Instance(interfaceOrder[interfaceIndex], RDP_tolerance, taskDescriptions[key]);
+      swapHeader('buttons'); //Display header for drawing interface
+    }
+
+    // Merge interaction data
+    function mergeInteractionData(key, data) {
+      if (key in interactionData) {
+        // Take note that this task was reset
+        data["reset"][0] = true;
+        for (let subkey in data) {
+          interactionData[key][subkey] = [...interactionData[key][subkey], ...data[subkey]];
+        }
+      } else {
+        interactionData[key] = data;
+      }
+    }
+
+    //Reset current task 
+    function resetTask() {
+      //Remove all possible p5 canvases from div container
+      let p5Canvases = document.getElementsByClassName("p5Canvas");
+      for (let i = 0; i < p5Canvases.length; i++) {
+        p5Canvases[i].remove();
+      }
+      //Get interaction data before interface is restarted
+      let currentInteraction = drawingInterface.interactionData.getData();
+
+      let key = interfaceOrder[interfaceIndex] + '_' + String(taskIndex + 1);
+
+      mergeInteractionData(key, currentInteraction);
+      newP5Instance(interfaceOrder[interfaceIndex], RDP_tolerance, taskDescriptions[key]);
+    }
+
+    //Next task (either go to new drawing task or to usability survey)
+    function nextTask() {
+      // Get data from interface interaction
+      let interfaceData = getInterfaceData();
+      //Check if a sketch has been drawn, if yes submit data
+      if (interfaceData) {
+        //Interface + Task index
+        let key = interfaceOrder[interfaceIndex] + '_' + String(taskIndex + 1);
+        mergeInteractionData(key, interfaceData[0]);
+        sketchData[key] = interfaceData[1];
+
+        // Increment task index
+        taskIndex++;
+        //Start the next task for this interface if there are any left
+        if (taskIndex < numberOfTasks) {
+          // Start new p5 instance
+          let key = interfaceOrder[interfaceIndex] + '_' + String(taskIndex + 1);
+          newP5Instance(interfaceOrder[interfaceIndex], RDP_tolerance, taskDescriptions[key]);
+          // Start audio (if task has audio)
+          if (taskIndex > 1) {
+            let soundNumber = taskIndex - 1;
+            let soundPath = 'audio/sound' + soundNumber + '.mp3';
+            audioLoader(soundPath);
+          }
+        }
+        // If all tasks are done, go to usability survey 
+        else {
+          taskIndex = 0; //Reset task index
+          //Hide sketch interface and get data 
+          let interfaceElement = document.getElementById('sketch');
+          interfaceElement.style.display = 'none';
+
+          //Pause audio
+          let audioElement = document.getElementById('soundplayer');
+          audioElement.pause();
+          //Hide audio element and remove source to ensure that audio can't be played
+          audioElement.src = '';
+          audioElement.style.display = 'none';
+
+          //Swap header to heading
+          swapHeader('heading');
+
+          //Display survey
+          let surveyElement = document.getElementById('usability_survey');
+          surveyElement.style.display = 'block';
+        }
+      }
+    }
+
+    // Remove current interface and save the data 
+    function getInterfaceData() {
+      //First check that a sketch has been drawn
+      if (drawingInterface.current_sketch) {
+        let sketchData = drawingInterface.current_sketch.getData();
+        if (sketchData['sketch'].length ==
+          0) { //Empty sketch array means that participant started sketch but undid all strokes
+          alert('Please draw something before proceeding to the next task.');
+          return false;
+        } else {
+          //Remove all possible p5 canvases from div container
+          let p5Canvases = document.getElementsByClassName("p5Canvas");
+          for (let i = 0; i < p5Canvases.length; i++) {
+            p5Canvases[i].remove();
+          }
+          // Get data from last instance 
+          return [drawingInterface.interactionData.getData(), drawingInterface.current_sketch.getData()];
+        }
+      } else {
+        // If sketch doesn't exist at all, it means that partciiapnt hasn't started the task at all
+        alert('Please start the current task before proceeding to the next one.');
+        return false;
+      }
+    }
+
+    //Start a new P5 instance for drawing a sketch
+    function newP5Instance(mode, tolerance, description) {
+      // New p5 Instance
+      drawingInterface = new p5(sketchCanvas, 'sketch');
+      // The amount of sketch simplification (epsilon) using the Ramer-Dougral-Peucker algorithm
+      drawingInterface.RDP_tolerance = tolerance;
+
+      // When will the sketch be simplified:
+      // real_time: sketch is simplified while drawing 
+      // stroke_end: sketch is simplified when a stroke is finished 
+      // none: stroke is not simplified 
+      drawingInterface.RDP_mode = mode;
+
+      // Display instructions for this task
+      let taskDescriptionLabel = document.getElementById('task_description');
+      taskDescriptionLabel.style.opacity = 0.6;
+      taskDescriptionLabel.innerHTML = description;
+
+      //Make description fade out when sketch is started
+      let interfaceElement = document.getElementById("sketch");
+      interfaceElement.addEventListener('mousedown', function () {
+        let taskDescriptionLabel = document.getElementById('task_description');
+        taskDescriptionLabel.style.transition = 'opacity 1s';
+        taskDescriptionLabel.style.opacity = 0;
+      }, true);
+    }
+
+    // Load audio
+    function audioLoader(soundSource) {
+      let audioElement = document.getElementById('soundplayer');
+      audioElement.pause();
+      audioElement.src = soundSource;
+      audioElement.loop = true;
+      setTimeout(function () {
+        audioElement.play()
+      }, 1000);
+      //Make sure that audio element is visible 
+      audioElement.style.display = 'block';
+    }
+
+    //////////////////////////////////////////
+    // Handle survey submissions 
+    //////////////////////////////////////////
+
+    let surveyData = {};
+
+    // Submit usability surveys 
+    function submitUsabilitySurvey(event) {
+      handleSubmit(event);
+      //Hide survey page
+      let surveyElement = document.getElementById('usability_survey');
+      surveyElement.style.display = 'none';
+      //Reset form for future use 
+      let surveyForm = document.getElementById('usability_survey_form');
+      surveyForm.reset();
+
+      interfaceIndex++;
+      //Go to next interface if there are any left
+      if (interfaceIndex < numberOfInterfaces) {
+        //Hide sound player
+        let audioElement = document.getElementById("soundplayer");
+        audioElement.style.display = 'none';
+
+        //Display interface page
+        let key = interfaceOrder[interfaceIndex] + '_' + String(taskIndex + 1);
+        newP5Instance(interfaceOrder[interfaceIndex], RDP_tolerance, taskDescriptions[key]);
+        let interfaceElement = document.getElementById('sketch');
+        interfaceElement.style.display = 'block';
+
+        //Swap header back to buttons
+        swapHeader('buttons');
+      } else {
+        displayPage('final_survey', surveyForm);
+        //Swap header back to heading
+        swapHeader('heading');
+      }
+    }
+
+    // Handle form data
+    function handleSubmit(event) {
+      event.preventDefault();
+      let surveyName = event.target.name;
+      if (surveyName === "SUS") {
+        surveyName = "SUS_" + interfaceOrder[interfaceIndex];
+      }
+      const data = new FormData(event.target);
+      const value = Object.fromEntries(data.entries());
+      surveyData[surveyName] = value;
+
+      //If the sumbmitted survey is the personal_survey (which is the last one), submit everything
+      if (surveyName === "personal_info") {
+        submitEverything();
+        displayPage('submit', event.target);
+      } else if (surveyName === "overall_feedback") {
+        displayPage('personal_survey', event.target);
+      }
+    }
+
+    // Add event listeners to survey forms
+    let SUS = document.getElementById('usability_survey_form');
+    SUS.addEventListener('submit', submitUsabilitySurvey);
+
+    let personal_survey = document.getElementById('personal_survey_form');
+    personal_survey.addEventListener('submit', handleSubmit);
+
+    let final_survey = document.getElementById('final_survey_form');
+    final_survey.addEventListener('submit', handleSubmit);
+
+    //////////////////////////////////////////
+    // Submit data to Firebase
+    ////////////////////////////////////////// 
+
+    // Initialise database
+    var db = firebase.database();
+
+    // Generate participant key
+    let key = db.ref().push().key;
+
+    function submitData(ref, data) {
+      //Submit data
+      db.ref(ref).set(data)
+        .then(function () {
+          displayPage('end', document.getElementById("submit"));
+        })
+        .catch(function (error) {
+          alert("Synchronisation failed! Please try to submit again.");
+        });
+    }
+
+    function submitEverything() {
+      //Submit setup data (date,device and interface order)
+      //Date when study was completed
+      let participantDate = new Date();
+      const setupData = {
+        date: participantDate.toDateString(),
+        device: participantDevice,
+        screenWidth: screen.width,
+        screenHeight: screen.height,
+        order: interfaceOrder
+      };
+
+      let allData = {
+        setup: setupData,
+        interaction: interactionData,
+        sketches: sketchData,
+        surveys: surveyData
+      };
+      submitData(key, allData);
+      // let testData = [];
+      // for (let i=0; i<100000; i++) {
+      //   testData.push(Math.random(100));
+      // }
+      // submitData(key,{test: testData});  
+    }
+  </script>
+
+</body>
+
+</html>

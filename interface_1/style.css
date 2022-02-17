@@ -1,0 +1,237 @@
+@font-face {
+  font-family: 'StencilCreek-50';
+  src: url(font/3249EE_0_0.eot);
+  src: url(font/3249EE_0_0.eot?#iefix) format('embedded-opentype'),url(font/3249EE_0_0.woff2) format('woff2'),url(font/3249EE_0_0.woff) format('woff'),url(font/3249EE_0_0.ttf) format('truetype');
+}
+
+head,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif
+}
+
+
+/* Headings */
+h1 {
+  /* font-family: 'StencilCreek-50'; */
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+#MATLogo {
+  height: 80px;
+  /* display: inline-block; */
+  padding-right: 10px;
+  float: left;
+}
+
+#QMLogo {  
+  flex-grow: 1;
+  height: 70px;
+  padding-right: 10px;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+/* Change logo according to screen size */
+@media screen and (max-width: 1000px) {
+  #QMLogo {
+    background-image: url("img/QMLogo_small.png");
+  }
+}
+@media screen and (min-width: 1001px) {
+  #QMLogo {
+    background-image: url("img/QMLogo.png");
+  } 
+}
+
+header {
+  font-family: 'StencilCreek-50';
+  box-sizing: border-box;
+  display: flex;
+  position: sticky;
+  top: 0;
+  align-items: center;
+  min-height: 80px;
+  width: 100%;
+  background-color: white;
+  border-bottom: 3px black solid;
+  /* padding: 5px 0; */
+}
+
+header h1 {
+  font-weight: 100;
+  font-style: normal;
+  font-size: 40px;
+  padding: 0;
+}
+
+header button {
+  display: none;
+  /* font-family: inherit; */
+  border: 0px;
+  height: 36px;
+  min-width: 36px;
+  font-size: 30px;
+  background: transparent;
+  opacity: 0.5;
+  align-items: center;
+}
+
+header button:hover {
+  color: black;
+  opacity: 0.9;
+}
+
+
+header audio {
+  /* margin-bottom: 10px; */
+  padding: 0;
+  display: none;
+}
+
+.large {
+  font-size: 25px;
+}
+
+.material-icons.large {
+  font-size: 80px;
+}
+
+button .material-icons {
+  font-size: 1.5em;
+  /* line-height: 0.5em; */
+}
+
+/* Main section */
+
+main {
+  padding: 20px 30px;
+  font-size: 15px;
+  display: none;
+}
+
+/* Display first page */
+main:first-of-type {
+  display: block;
+}
+
+.instructions figure {
+  width: 30%;
+  max-width: 700px;
+}
+
+figure img {
+  width: 100%;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+}
+
+/* Sketch Canvas */
+#sketch {
+  padding: 0;
+  margin: 0;
+}
+
+#task_description_wrapper {
+  position: absolute;
+  top: 58px;
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+#task_description {
+  opacity: 1.0;
+  font-size: 30px;
+  width: 50%;
+}
+
+/* Navigation Button */
+main button {
+  font-family: 'StencilCreek-50';
+  font-weight: 100;
+  font-style: normal;
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  font-size: 25px;
+  text-align: center;
+  line-height: 50px;
+  margin: auto;
+  display: inline-block;
+}
+
+
+main button:hover {
+      width: 100px;
+      height: 50px;
+      line-height: 50px;
+      box-shadow: 5px 5px #666;
+      cursor: pointer;
+}
+
+main button:active {
+      background-color: #666;
+      color: white;
+      width: 100px;
+      height: 50px;
+      line-height: 50px;
+      box-shadow: 5px 5px;
+}
+
+
+/* Surveys */
+label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 700px;
+}
+
+.surveyElement {
+  margin: 1em 0 2em 40px;
+}
+
+select.surveyElement {
+  width: 200px;
+}
+
+.horizontal {
+  display: flex;
+  padding: 0;  
+}
+
+.horizontal li {
+  margin: 0;
+  padding: 0;
+}
+
+.vertical {
+  display: block;
+  padding: 0;
+}
+
+.vertical li{
+  margin: 0 0 0.5em -0.5em;
+}
+
+.surveyElement li {
+  list-style-type: none;
+}
